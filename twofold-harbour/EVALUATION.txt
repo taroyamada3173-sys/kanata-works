@@ -1,0 +1,11 @@
+Twofold Harbour - evaluation build
+
+Twelve-level HTML5 game, edition 1.
+Run with a local static server, for example: python3 -m http.server 8000
+Open http://localhost:8000 in a modern browser.
+
+Personal play and publisher evaluation are permitted. Commercial hosting, branding, payment and maintenance require a separate agreement. No exclusivity or ownership transfer is included.
+
+OpenAI Codex was used for the code, visual interface and puzzle layouts. Automated solution searches and Chromium browser tests were performed; there has been no independent human playtesting. No third-party assets or dependencies are included. No exclusive copyright in AI-generated material is asserted.
+
+The game has no external API calls, advertising, accounts or gameplay analytics. Browser-local score storage is optional.
