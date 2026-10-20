@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200" font-family="'Hiragino Maru Gothic ProN','Zen Maru Gothic','Noto Sans JP',sans-serif">
+  <rect width="900" height="1200" fill="#fdf7ef"/>
+  <rect x="0" y="0" width="900" height="300" fill="#f6c58f"/>
+  <circle cx="780" cy="90" r="60" fill="#fde3b8"/>
+  <path d="M0 260 Q 220 200 450 250 T 900 230 V300 H0Z" fill="#fdf7ef"/>
+  <text x="70" y="110" font-size="34" fill="#7a4b22" font-weight="700">はじめての1泊2日でも安心</text>
+  <text x="70" y="190" font-size="64" fill="#5b3415" font-weight="800">旅の持ち物チェック</text>
+  <g font-size="30" fill="#4b3a2f">
+    <g transform="translate(70,340)">
+      <rect width="760" height="180" rx="28" fill="#fff" stroke="#f0d9bf" stroke-width="3"/>
+      <circle cx="80" cy="90" r="48" fill="#ffe4c4"/><text x="80" y="104" font-size="40" text-anchor="middle">1</text>
+      <text x="160" y="70" font-size="34" font-weight="800" fill="#c46a2b">必ず持つもの</text>
+      <text x="160" y="118">財布・スマホ・充電器・身分証</text>
+      <text x="160" y="158" font-size="24" fill="#8a7564">予約確認の画面はスクショで保存</text>
+    </g>
+    <g transform="translate(70,550)">
+      <rect width="760" height="180" rx="28" fill="#fff" stroke="#f0d9bf" stroke-width="3"/>
+      <circle cx="80" cy="90" r="48" fill="#dff1e4"/><text x="80" y="104" font-size="40" text-anchor="middle">2</text>
+      <text x="160" y="70" font-size="34" font-weight="800" fill="#3f8a5a">身だしなみ</text>
+      <text x="160" y="118">着替え1日分・スキンケア小分け</text>
+      <text x="160" y="158" font-size="24" fill="#8a7564">宿のアメニティは事前に確認</text>
+    </g>
+    <g transform="translate(70,760)">
+      <rect width="760" height="180" rx="28" fill="#fff" stroke="#f0d9bf" stroke-width="3"/>
+      <circle cx="80" cy="90" r="48" fill="#e0ecfa"/><text x="80" y="104" font-size="40" text-anchor="middle">3</text>
+      <text x="160" y="70" font-size="34" font-weight="800" fill="#3a6aa8">あると快適</text>
+      <text x="160" y="118">折りたたみ傘・エコバッグ・常備薬</text>
+      <text x="160" y="158" font-size="24" fill="#8a7564">お土産が増えても安心</text>
+    </g>
+  </g>
+  <rect x="70" y="980" width="760" height="130" rx="65" fill="#c46a2b"/>
+  <text x="450" y="1060" font-size="36" fill="#fff" font-weight="800" text-anchor="middle">保存して、出発前にもう一度チェック！</text>
+  <text x="450" y="1165" font-size="20" fill="#b49a85" text-anchor="middle">制作見本（Kanata Works）</text>
+</svg>
