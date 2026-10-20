@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>制作見本 — Kanata Works（SNS画像・図解／LP／PDF帳票のデータ化）</title>
+<meta name="description" content="Kanata Works の制作見本。Instagram投稿画像・インフォグラフィック、LPコーディング、PDF帳票からCSV/Excelへのデータ化。">
+<style>
+:root{--bg:#f7f4ef;--card:#fff;--line:#e6dfd4;--fg:#2c2a27;--mute:#7b746b;--accent:#2f7d74}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.75 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+main{max-width:980px;margin:0 auto;padding:48px 20px 40px}
+a{color:var(--accent)}
+h1{font-size:28px;margin:0 0 6px}
+.sub{color:var(--mute);margin:0 0 36px}
+nav.toc{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+nav.toc a{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 16px;text-decoration:none;font-size:14px}
+section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:28px}
+section h2{margin:0 0 4px;font-size:22px}
+.meta{color:var(--mute);font-size:14px;margin:0 0 18px}
+.points{margin:14px 0 0;padding-left:20px;color:#4a4640;font-size:15px}
+/* SNS carousel: 1080x1350 を 1/3 で表示 */
+.carousel{display:flex;gap:14px;overflow-x:auto;padding-bottom:8px}
+.slide{flex:0 0 288px;height:360px;border-radius:12px;position:relative;overflow:hidden;font-family:"Hiragino Maru Gothic ProN","Zen Maru Gothic","Noto Sans JP",sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.08)}
+.s1{background:linear-gradient(160deg,#efe6da,#d9cbb8);display:flex;flex-direction:column;justify-content:center;padding:28px;color:#4a3b2c}
+.s1 small{letter-spacing:.2em;font-size:11px}
+.s1 b{font-size:30px;line-height:1.3;margin:10px 0}
+.s1 span{font-size:13px}
+.s1 i{position:absolute;right:16px;bottom:14px;font-style:normal;font-size:12px;opacity:.8}
+.sx{background:#faf7f2;padding:26px;color:#3e3428}
+.sx .no{display:inline-block;background:#b89a78;color:#fff;border-radius:999px;font-size:12px;padding:2px 12px}
+.sx b{display:block;font-size:21px;line-height:1.4;margin:12px 0 10px}
+.sx p{font-size:13.5px;line-height:1.7;margin:0}
+.sx .box{position:absolute;left:26px;right:26px;bottom:24px;background:#efe6da;border-radius:10px;padding:10px 12px;font-size:12.5px}
+.info{display:grid;grid-template-columns:300px 1fr;gap:24px;align-items:start}
+.info img{width:100%;height:auto;border-radius:10px;border:1px solid var(--line)}
+.lp{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.lp iframe{width:100%;height:420px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.btn{display:inline-block;padding:9px 18px;border-radius:10px;border:1px solid var(--accent);text-decoration:none;font-size:14px}
+/* PDF帳票 → CSV */
+.pdf{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.paper{background:#fff;border:1px solid #d8d2c8;box-shadow:2px 3px 0 #ece6dc;padding:14px;font-size:11.5px;font-family:"Hiragino Mincho ProN","Noto Serif JP",serif}
+.paper h3{font-size:13px;text-align:center;margin:0 0 8px;letter-spacing:.3em}
+table{border-collapse:collapse;width:100%}
+.paper td,.paper th{border:1px solid #bbb;padding:3px 4px;vertical-align:top}
+.paper th{background:#f3f0ea;font-weight:600}
+.csv{font:12px/1.5 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto}
+.csv td,.csv th{border:1px solid var(--line);padding:3px 6px;white-space:nowrap}
+.csv th{background:#eef5f4}
+.csv .warn{background:#fff3d6}
+.result{display:flex;flex-wrap:wrap;gap:12px;margin-top:16px}
+.result div{background:#eef5f4;border-radius:12px;padding:10px 16px;font-size:14px}
+.result b{display:block;font-size:22px;color:var(--accent)}
+footer{color:var(--mute);font-size:13px;text-align:center;margin-top:30px}
+@media(max-width:760px){.info,.lp,.pdf{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<h1>制作見本</h1>
+<p class="sub">Kanata Works の制作見本です。題材の店舗・データはすべて架空のものです。ご依頼では、支給素材・テンプレート・指定ルールに合わせて仕上げます。<br><a href="../">← 作品一覧へ</a></p>
+<nav class="toc"><a href="#sns">Instagram投稿画像</a><a href="#infographic">インフォグラフィック</a><a href="#lp">LPコーディング</a><a href="#pdf">PDF帳票のデータ化</a></nav>
+
+<section id="sns">
+  <h2>Instagram投稿画像（カルーセル）</h2>
+  <p class="meta">1080×1350px・4枚組／淡色・ナチュラル系／テーマ「在宅ワークの集中が続くデスク整理」</p>
+  <div class="carousel">
+    <div class="slide s1"><small>DESK ROUTINE</small><b>集中が続く<br>デスク整理<br>3つのコツ</b><span>今日から5分でできること</span><i>保存して見返してね →</i></div>
+    <div class="slide sx"><span class="no">01</span><b>使うものだけ<br>手の届く範囲に</b><p>毎日使うペンとメモだけを利き手側へ。それ以外は引き出しへしまうと、視界のノイズが減ります。</p><div class="box">ポイント：机の上は「今日の作業」だけ</div></div>
+    <div class="slide sx"><span class="no">02</span><b>ケーブルは<br>1か所にまとめる</b><p>充電ケーブルはクリップで机の端に固定。探す時間と、からまるストレスがなくなります。</p><div class="box">ポイント：100円のクリップで十分</div></div>
+    <div class="slide sx"><span class="no">03</span><b>終わったら<br>1分リセット</b><p>作業の終わりに机を元の状態へ。次の日の自分が、迷わず作業を始められます。</p><div class="box">ポイント：リセットまでが作業時間</div></div>
+  </div>
+  <ul class="points"><li>1枚目は保存したくなる表紙、2枚目以降は見出し・本文・ポイント枠の位置をそろえ、スワイプしても統一感が続く構成。</li><li>スマートフォン表示で読める文字サイズと行間を確認しています。PNG／JPGで納品、Canva等のテンプレート支給にも対応します。</li></ul>
+</section>
+
+<section id="infographic">
+  <h2>インフォグラフィック（図解）</h2>
+  <div class="info">
+    <img src="infographic-travel.svg" alt="旅の持ち物チェックのインフォグラフィック見本" width="900" height="1200">
+    <div>
+      <p class="meta">900×1200px（3:4）／旅行・おでかけジャンル</p>
+      <ul class="points"><li>「結論のタイトル→番号付きの3項目→行動をうながす締め」の順で、視線が上から下へ自然に流れる構成。</li><li>項目ごとに色を分け、補足は小さめの文字で添えて、ひと目で要点が拾えるようにしています。</li><li>参考資料の内容・数値・名称を1つずつ照合して反映し、誤字・配置を最終確認してから納品します。</li></ul>
+      <p><a class="btn" href="infographic-travel.svg">原寸で見る</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="lp">
+  <h2>LPコーディング</h2>
+  <div class="lp">
+    <iframe src="lp-cafe/" title="LP制作見本：こむぎ日和" loading="lazy"></iframe>
+    <div>
+      <p class="meta">架空のベーカリーカフェ「こむぎ日和」／HTML・CSSのみ（外部ライブラリなし）</p>
+      <ul class="points"><li>ファーストビュー→こだわり3点→メニュー→予約の流れ→よくある質問→予約ボタンの、問い合わせにつなげる王道の構成。</li><li>スマートフォン幅では1列に切り替わるレスポンシブ対応。追従ヘッダーとページ内リンク付き。</li><li>デザインカンプ（画像・PDF）からのコーディングや、WordPressへの組み込みにも対応します。</li></ul>
+      <p><a class="btn" href="lp-cafe/">全画面で見る</a></p>
+    </div>
+  </div>
+</section>
+
+<section id="pdf">
+  <h2>PDF帳票のデータ化（CSV／Excel）</h2>
+  <p class="meta">合成した帳票PDF（1ページ4件・住所や品目の折り返し・空欄・特殊文字を含む）からCSVへ一括抽出</p>
+  <div class="pdf">
+    <div class="paper"><h3>受 付 一 覧</h3>
+      <table><tr><th>受付番号</th><th>氏名</th><th>住所</th><th>品目</th><th>金額</th><th>備考</th></tr>
+      <tr><td>R-1001</td><td>髙橋 花子</td><td>神奈川県模擬市港北9-10-11<br>テストビル３Ｆ</td><td>USBメモリ 64GB</td><td>10,890</td><td>※至急</td></tr>
+      <tr><td>R-1002</td><td>齋藤 太郎</td><td>福岡県仮想市天神12-13</td><td>ファイル①〜③<br>セット</td><td>47,410</td><td></td></tr>
+      <tr><td>R-1003</td><td>佐藤 太郎</td><td>福岡県仮想市天神12-13</td><td>トナー ＃K-200</td><td>71,280</td><td></td></tr>
+      <tr><td>R-1004</td><td>齋藤 太郎</td><td>福岡県仮想市天神12-13</td><td>トナー ＃K-200</td><td>5,500</td><td>要確認：<br>住所変更</td></tr></table>
+    </div>
+    <div class="csv"><table>
+      <tr><th>受付番号</th><th>氏名</th><th>住所</th><th>品目</th><th>金額</th><th>備考</th></tr>
+      <tr><td>R-1001</td><td>髙橋 花子</td><td>神奈川県模擬市港北9-10-11 テストビル３Ｆ</td><td>USBメモリ 64GB</td><td>10,890</td><td>※至急</td></tr>
+      <tr><td>R-1002</td><td>齋藤 太郎</td><td>福岡県仮想市天神12-13</td><td>ファイル①〜③セット</td><td>47,410</td><td></td></tr>
+      <tr><td>R-1003</td><td>佐藤 太郎</td><td>福岡県仮想市天神12-13</td><td>トナー ＃K-200</td><td>71,280</td><td></td></tr>
+      <tr class="warn"><td>R-1004</td><td>齋藤 太郎</td><td>福岡県仮想市天神12-13</td><td>トナー ＃K-200</td><td>5,500</td><td>要確認：住所変更</td></tr>
+    </table></div>
+  </div>
+  <div class="result"><div><b>240件</b>12ページ×5ファイルを一括処理</div><div><b>1,680項目</b>正解データと全項目一致</div><div><b>UTF-8（BOM付）</b>Excelでそのまま開けるCSV</div></div>
+  <ul class="points"><li>文字の座標から列と行を判定するため、セル内の折り返しも1つのセルに連結できます。ファイル名・ページ番号の列も付けられます。</li><li>電話番号・金額などの書式に合わない行は「要確認」列に印を付け、目視の確認を最小限にします。</li><li>帳票ごとに見出し名・レコードの目印・チェック規則を合わせ、サンプル数件で一致を確認してから全件を処理します。</li></ul>
+</section>
+
+<footer>© Kanata Works ｜ <a href="../">作品一覧</a></footer>
+</main>
+</body>
+</html>
