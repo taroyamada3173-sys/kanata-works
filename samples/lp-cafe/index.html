@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>こむぎ日和 ｜ 焼きたてパンと朝ごはんのカフェ（LP制作見本）</title>
+<meta name="description" content="架空のベーカリーカフェを題材にしたランディングページの制作見本です。">
+<style>
+:root{--cream:#fbf6ee;--wheat:#e7c48d;--brown:#6b4423;--ink:#3b2b20;--mute:#8a7563;--green:#5e8c61}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--cream);color:var(--ink);font:16px/1.8 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+.nav{position:sticky;top:0;background:rgba(251,246,238,.92);backdrop-filter:blur(6px);border-bottom:1px solid #eadbc6;z-index:5}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;letter-spacing:.08em;color:var(--brown)}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;font-size:14px}
+.nav a{text-decoration:none}
+.hero{padding:80px 0 70px;background:radial-gradient(700px 360px at 85% 20%,#f3dcb4,transparent),linear-gradient(#fbf6ee,#f6ead8)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.hero small{color:var(--green);font-weight:700;letter-spacing:.12em}
+.hero h1{font-size:clamp(30px,5vw,48px);line-height:1.35;margin:10px 0 16px;color:var(--brown)}
+.hero p{color:var(--mute);margin:0 0 26px}
+.btn{display:inline-block;background:var(--brown);color:#fff;text-decoration:none;padding:14px 28px;border-radius:999px;font-weight:700;box-shadow:0 6px 16px rgba(107,68,35,.25)}
+.btn.sub{background:transparent;color:var(--brown);box-shadow:none;border:2px solid var(--brown);margin-left:10px}
+.art{aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 35%,#f7e2bd,#e2b06b 60%,#c98a43);position:relative;box-shadow:inset -18px -24px 40px rgba(0,0,0,.12)}
+.art:before,.art:after{content:"";position:absolute;background:#fff6e6;border-radius:50%;opacity:.7}
+.art:before{width:46%;height:9%;left:24%;top:38%;transform:rotate(-18deg)}
+.art:after{width:46%;height:9%;left:30%;top:56%;transform:rotate(-18deg)}
+section{padding:72px 0}
+h2{font-size:28px;color:var(--brown);margin:0 0 8px;text-align:center}
+.lead{text-align:center;color:var(--mute);margin:0 0 40px}
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:#fff;border-radius:18px;padding:26px;box-shadow:0 4px 18px rgba(80,50,20,.06)}
+.card b{display:block;font-size:19px;margin-bottom:6px}
+.card span{display:inline-block;font-size:12px;color:#fff;background:var(--green);border-radius:999px;padding:2px 12px;margin-bottom:10px}
+.menu{background:#fff}
+table{width:100%;max-width:640px;margin:0 auto;border-collapse:collapse}
+td{padding:14px 6px;border-bottom:1px dashed #e4d3bd}td:last-child{text-align:right;font-weight:700}
+.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.flow div{background:#fff;border-radius:16px;padding:22px;position:relative}
+.flow div:before{counter-increment:s;content:"STEP " counter(s);display:block;font-size:12px;font-weight:800;color:var(--green)}
+.faq details{background:#fff;border-radius:14px;padding:16px 20px;margin:0 auto 12px;max-width:720px}
+.faq summary{font-weight:700;cursor:pointer}
+.cta{background:var(--brown);color:#fff;text-align:center}
+.cta h2{color:#fff}.cta p{color:#f1dfc6}.cta .btn{background:#fff;color:var(--brown)}
+footer{padding:26px 0;text-align:center;color:var(--mute);font-size:13px}
+@media(max-width:760px){.nav ul{display:none}.hero .wrap,.feat,.flow{grid-template-columns:1fr}.art{max-width:240px;margin:0 auto}.btn.sub{margin:12px 0 0}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><span class="logo">こむぎ日和</span><ul><li><a href="#feature">こだわり</a></li><li><a href="#menu">モーニング</a></li><li><a href="#flow">ご予約の流れ</a></li><li><a href="#faq">よくある質問</a></li></ul></div></nav>
+<header class="hero"><div class="wrap">
+  <div><small>BAKERY &amp; CAFE</small>
+  <h1>朝7時、焼きたての<br>香りで1日をはじめる。</h1>
+  <p>国産小麦の食パンと季節のスープ。出勤前の20分でも、ゆっくり味わえるモーニングをご用意しています。</p>
+  <a class="btn" href="#cta">席を予約する</a><a class="btn sub" href="#menu">メニューを見る</a></div>
+  <div class="art" role="img" aria-label="焼きたての丸パンのイラスト"></div>
+</div></header>
+<section id="feature"><div class="wrap">
+  <h2>3つのこだわり</h2><p class="lead">毎日通いたくなる理由を、ひとつずつ丁寧に。</p>
+  <div class="feat">
+    <div class="card"><span>01</span><b>毎朝6時の焼き上げ</b>開店に合わせて焼き上げるので、いちばん香りのよい状態でお出しします。</div>
+    <div class="card"><span>02</span><b>季節のスープ</b>旬の野菜を使ったスープを、週替わりでセットにしています。</div>
+    <div class="card"><span>03</span><b>ひとりでも入りやすい</b>カウンター席とコンセント席があり、朝の作業にも使えます。</div>
+  </div>
+</div></section>
+<section id="menu" class="menu"><div class="wrap">
+  <h2>モーニングセット</h2><p class="lead">7:00〜10:30（ドリンク付き）</p>
+  <table>
+    <tr><td>厚切りトーストと季節のスープ</td><td>780円</td></tr>
+    <tr><td>クロワッサンとたまごサラダ</td><td>820円</td></tr>
+    <tr><td>パン3種の食べ比べプレート</td><td>950円</td></tr>
+  </table>
+</div></section>
+<section id="flow"><div class="wrap">
+  <h2>ご予約の流れ</h2><p class="lead">前日までのご予約で、焼きたてをお取り置きします。</p>
+  <div class="flow"><div><b>日時を選ぶ</b><br>予約フォームから来店日時と人数を入力。</div><div><b>確認メール</b><br>受付後すぐに確認メールが届きます。</div><div><b>ご来店</b><br>お名前を伝えるだけでお席へご案内。</div></div>
+</div></section>
+<section id="faq" class="faq"><div class="wrap">
+  <h2>よくある質問</h2><p class="lead">ご来店前に気になることをまとめました。</p>
+  <details><summary>予約なしでも入れますか？</summary>はい。空いているお席へご案内します。週末の8時台は混み合います。</details>
+  <details><summary>パンだけの持ち帰りはできますか？</summary>店頭のパンはすべてお持ち帰りいただけます。</details>
+</div></section>
+<section id="cta" class="cta"><div class="wrap">
+  <h2>明日の朝、焼きたてで待っています。</h2><p>ご予約はかんたん1分。</p><a class="btn" href="#cta">予約フォームへ</a>
+</div></section>
+<footer>こむぎ日和（架空の店舗）— Kanata Works のLP制作見本</footer>
+</body>
+</html>
