@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Alma PrimeX｜KOSHO CLINIC（テストコーディング）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>@charset "UTF-8";:root{--ink:#2b2622;--sub:#5d554e;--gold:#a8875a;--gold-d:#8c6d43;--line:#e6dfd6;--beige:#f4efe8;--serif:"Noto Serif JP","Yu Mincho",serif;--en:"Cormorant Garamond","Noto Serif JP",serif;--sans:"Noto Sans JP",sans-serif;--w:1200px}*,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:80px}body{margin:0;color:var(--ink);font-family:var(--serif);font-size:15px;line-height:1.9;background:#fff;-webkit-font-smoothing:antialiased}img{max-width:100%;height:auto;display:block}a{color:inherit;text-decoration:none}ul,ol{list-style:none;margin:0;padding:0}h1,h2,h3,p,figure{margin:0}.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;border-radius:999px;font-family:var(--serif);letter-spacing:.08em;transition:opacity .3s,transform .3s}.btn:hover{opacity:.85;transform:translateY(-1px)}.btn--gold{color:#fff;background:linear-gradient(135deg,#b99668 0%,#8f6d45 55%,#a98858 100%);box-shadow:0 4px 12px rgba(120,90,50,.25);padding:12px 28px;font-size:14px}.btn--lg{padding:20px 56px;font-size:20px;border:1px solid rgba(255,255,255,.4)}.btn--line{border:1px solid var(--gold);color:var(--gold-d);padding:9px 40px;font-size:14px;background:#fff}.arrow{display:inline-block;width:18px;height:1px;background:currentColor;position:relative}.arrow::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid currentColor;border-right:1px solid currentColor;transform:rotate(45deg)}.ttl{text-align:center;font-weight:500;font-size:40px;line-height:1.3;letter-spacing:.04em;font-family:var(--en)}.ttl .jp{font-family:var(--serif);font-size:.78em}.ttl .num{font-size:1.35em;color:var(--gold-d)}.ttl .en{display:block;margin-top:6px;font-family:var(--en);font-size:11px;letter-spacing:.4em;color:var(--gold)}.ttl--left{text-align:left}.ttl--side{display:flex;align-items:baseline;gap:18px;text-align:left;font-family:var(--serif);font-size:26px;margin-bottom:18px}.ttl--side .en{display:inline;margin:0}.header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(6px);border-bottom:1px solid rgba(0,0,0,.04)}.header__inner{max-width:1440px;margin:auto;display:flex;align-items:center;gap:32px;padding:12px 40px}.logo{display:flex;flex-direction:column;line-height:1.3}.logo__name{font-family:var(--en);font-size:28px;letter-spacing:.04em}.logo__tag{font-size:11px;letter-spacing:.12em;color:var(--sub)}.gnav{margin-left:auto}.gnav ul{display:flex;gap:30px;font-size:13px;letter-spacing:.06em}.gnav a:hover{color:var(--gold-d)}.menu-btn{display:none}.fv{background:linear-gradient(100deg,#fbfaf8 0%,#f3f1ee 45%,#ece9e5 100%);overflow:hidden}.fv__inner{max-width:1440px;margin:auto;display:grid;grid-template-columns:47% 53%;align-items:center;min-height:640px}.fv__text{padding:50px 0 50px 88px;position:relative;z-index:2}.fv__lead{color:var(--gold);font-size:20px;letter-spacing:.25em}.fv__lead span{color:#c26a3b}.fv__brand{display:flex;align-items:center;gap:16px;margin:6px 0 30px;font-weight:400}.fv__mark svg{width:160px;height:80px}.fv__name{font-family:var(--sans);font-weight:300;font-size:68px;line-height:1;letter-spacing:-.01em;white-space:nowrap}.fv__name b{font-family:var(--en);font-weight:600;font-size:1.12em}.fv__name sup{font-size:12px;vertical-align:top}.fv__name small{display:block;font-family:var(--sans);font-size:22px;margin-top:8px;color:var(--sub)}.fv__catch{font-size:44px;white-space:nowrap;line-height:1.45;font-weight:500;letter-spacing:.04em}.fv__catch .small{font-size:.7em}.fv__sub{font-size:24px;letter-spacing:.12em;margin:14px 0 34px}.fv__points{display:flex;gap:14px}.fv__points li{width:138px;height:138px;border-radius:50%;background:rgba(255,255,255,.92);box-shadow:0 6px 18px rgba(120,100,80,.1);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;font-size:13px;line-height:1.5;color:var(--gold-d);font-weight:500}.fv__points img{width:44px;height:44px;margin-bottom:8px}.fv__visual{align-self:stretch}.fv__visual img{width:100%;height:100%;object-fit:cover;object-position:left center}.about{background:linear-gradient(90deg,#fbf8f4 0%,#f2ece5 100%)}.about__inner{max-width:1440px;margin:auto;display:grid;grid-template-columns:1fr 520px;align-items:center}.about__text{padding:56px 40px 56px 150px}.about__text p{margin:26px 0 30px;font-size:16px;line-height:2.1}.about__text .btn{margin-left:46%}.about__img img{width:100%}.tech{padding:60px 20px 40px;background:#fafafa}.tech__box{max-width:var(--w);margin:40px auto 0;background:#fff;border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.05);display:grid;grid-template-columns:1fr 120px 1fr;align-items:center;padding:40px 50px 50px}.tech__item{text-align:center}.tech__item h3{font-family:var(--en);font-weight:600;font-size:56px;line-height:1.1}.tech__item h3 .no{font-weight:400;color:var(--gold);margin-right:18px;font-size:.8em}.tech__item h3 small{display:block;font-family:var(--en);font-size:24px;text-align:right;padding-right:40px}.tech__lead{font-size:22px;font-weight:600;line-height:1.7;margin:14px 0 18px}.tech__item img{margin:0 auto 22px;width:400px;max-width:100%}.tech__item p:last-child{font-size:15px;text-align:left;display:inline-block}.tech__cross{position:relative;height:100px}.tech__cross::before,.tech__cross::after{content:"";position:absolute;left:50%;top:50%;width:130px;height:1px;background:#888}.tech__cross::before{transform:translate(-50%,-50%) rotate(45deg)}.tech__cross::after{transform:translate(-50%,-50%) rotate(-45deg)}.mech{padding:40px 20px 60px}.mech__lead{text-align:center;margin:16px 0 30px;font-size:16px}.mech__body{max-width:var(--w);margin:auto;display:grid;grid-template-columns:1.8fr 1fr;gap:50px;align-items:center}.mech__rf{position:relative}.mech__rf figcaption{text-align:center;font-size:14px;color:var(--gold-d);margin-top:16px}.badge{position:absolute;right:-40px;top:-110px;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle,#fff 58%,#efe2cb 60%,#c7a46e 66%,#fff 69%);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--en);color:#555;box-shadow:0 6px 20px rgba(150,120,70,.25);line-height:1.15}.badge__en{font-size:13px;letter-spacing:.12em}.badge__num{font-size:46px}.badge__unit{font-size:13px}.features{padding:50px 20px 60px;background:linear-gradient(180deg,#e7d9c6 0%,#f3ebe0 60%,#faf7f3 100%)}.features__list{max-width:var(--w);margin:36px auto 0;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}.features__list li{background:rgba(255,255,255,.92);border-radius:8px;padding:18px 20px 22px;text-align:center;box-shadow:0 6px 20px rgba(120,90,60,.08)}.features__list .no{font-family:var(--en);font-size:40px;color:var(--gold);line-height:1.1}.features__list h3{font-size:21px;font-weight:500;line-height:1.55;margin:6px 0 14px;min-height:3.1em}.features__list img{width:100%;border-radius:4px}.features__list p{font-size:14px;margin-top:12px;color:var(--sub)}.area{padding:40px 20px 50px}.area__list{max-width:var(--w);margin:30px auto 0;display:grid;grid-template-columns:repeat(6,1fr);gap:20px;text-align:center;font-size:16px;font-weight:600;line-height:1.5}.area__list img{width:150px;height:150px;object-fit:cover;border-radius:50%;margin:0 auto 12px;box-shadow:0 4px 14px rgba(0,0,0,.06)}.area__list small{display:block;font-size:13px;font-weight:400}.two-col{max-width:var(--w);margin:auto;padding:20px 20px 70px;display:grid;grid-template-columns:1fr 1fr;gap:50px 60px}.hp__list{display:grid;grid-template-columns:1fr 1fr;gap:20px}.hp__item{border:1px solid var(--line);border-radius:8px;padding:18px}.hp__item h3{font-family:var(--sans);font-size:22px;font-weight:500;text-align:center}.hp__item h3 span{font-family:var(--serif);font-size:15px}.hp__item img{margin:10px auto;max-height:150px}.hp__item p{font-size:14px;line-height:1.8}.flow__list{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.flow__list li{border:1px solid var(--line);border-radius:8px;padding:14px 8px 8px;text-align:center;background:#fff}.flow__list .no{font-family:var(--en);font-size:36px;color:var(--gold);line-height:1}.flow__list h3{font-size:16px;font-weight:600;margin-top:8px;line-height:1.4}.flow__list h3 small{display:block;font-size:14px}.flow__list p{font-size:12px;line-height:1.6;min-height:3.2em;margin:6px 0 8px}.flow__list .note{font-size:11px}.flow__list img{border-radius:4px;width:100%}.price__scroll{overflow-x:auto}.price__table{width:100%;min-width:480px;border-collapse:collapse;font-size:15px;border:1px solid var(--line)}.price__table thead th{background:#e9e0d3;font-weight:500;padding:10px}.price__table th,.price__table td{border:1px solid var(--line);padding:10px 14px;text-align:center}.price__table tbody th{text-align:left;font-weight:500;background:#fbfaf8}.price__table tbody tr:nth-child(even) td{background:#fbfaf8}.price__note{font-size:12px;color:var(--sub);margin-top:10px}.faq__list{display:grid;gap:12px}.faq details{border:1px solid var(--line);border-radius:8px;background:#fff}.faq summary{list-style:none;cursor:pointer;padding:14px 54px 14px 64px;position:relative;font-size:16px;letter-spacing:.06em}.faq summary::-webkit-details-marker{display:none}.faq summary::before{content:"Q";position:absolute;left:22px;top:50%;transform:translateY(-50%);font-family:var(--en);font-size:26px}.faq summary::after{content:"+";position:absolute;right:22px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--sub);transition:transform .3s}.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}.faq details p{padding:0 24px 16px 64px;font-size:14px;color:var(--sub)}.cta{color:#fff;background:linear-gradient(rgba(54,40,30,.78),rgba(54,40,30,.78)),radial-gradient(circle at 80% 40%,#7a6352,#3d2d22 70%)}.cta__inner{max-width:1440px;margin:auto;display:grid;grid-template-columns:260px 1fr auto;align-items:center;gap:40px;padding:50px 60px}.logo--white .logo__tag{color:rgba(255,255,255,.85)}.logo--white .logo__name{font-size:34px}.cta__lead{font-size:26px;letter-spacing:.18em;margin-bottom:18px}.cta__points{display:flex;gap:40px;text-align:center;font-size:14px;line-height:1.6}.cta__points svg{width:44px;height:44px;margin:0 auto 10px;display:block;fill:none;stroke:#fff;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}.two-col>*,.tech__box>*,.mech__body>*,.hp__list>*,.fv__inner>*,.about__inner>*{min-width:0}.fade{opacity:0;transform:translateY(20px);transition:opacity .8s ease,transform .8s ease}.fade.is-in{opacity:1;transform:none}@media (prefers-reduced-motion:reduce){.fade{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}@media (max-width:1100px){.gnav ul{gap:18px;font-size:12px}.fv__text{padding-left:40px}.fv__name{font-size:52px}.fv__catch{font-size:40px}.fv__points li{width:116px;height:116px;font-size:12px}.about__text{padding-left:40px}.tech__box{padding:30px;grid-template-columns:1fr 60px 1fr}.tech__item h3{font-size:40px}.two-col{grid-template-columns:1fr}.cta__inner{grid-template-columns:1fr;text-align:center;justify-items:center}}@media (max-width:960px){.gnav{position:fixed;inset:64px 0 auto 0;background:#fff;padding:10px 24px 24px;box-shadow:0 10px 20px rgba(0,0,0,.08);transform:translateY(-120%);transition:transform .35s;z-index:-1}.gnav.is-open{transform:none}.gnav ul{flex-direction:column;gap:0;font-size:15px}.gnav li a{display:block;padding:12px 0;border-bottom:1px solid var(--line)}.header__cta{margin-left:auto;padding:9px 18px;font-size:13px}.menu-btn{display:flex;flex-direction:column;justify-content:center;gap:6px;width:40px;height:40px;border:0;background:none;padding:8px;cursor:pointer}.menu-btn span{display:block;height:1px;background:var(--ink)}.header__inner{padding:10px 20px;gap:14px}.logo__name{font-size:22px}.fv__inner{grid-template-columns:1fr;min-height:0}.fv__text{padding:36px 24px 10px}.fv__visual img{height:auto}.about__inner{grid-template-columns:1fr}.about__text{padding:44px 24px 20px}.about__text .btn{margin-left:0}.tech__box{grid-template-columns:1fr}.tech__cross{height:70px}.tech__cross::before,.tech__cross::after{width:80px}.mech__body{grid-template-columns:1fr}.badge{right:0;top:-70px;width:130px;height:130px}.badge__num{font-size:34px}.features__list{grid-template-columns:repeat(2,1fr)}.area__list{grid-template-columns:repeat(3,1fr)}}@media (max-width:600px){body{font-size:14px}.header__cta{display:none}.ttl{font-size:30px}.ttl--side{font-size:22px}.fv__lead{font-size:15px}.fv__mark svg{width:90px;height:46px}.fv__name{font-size:38px}.fv__name small{font-size:15px}.fv__catch{font-size:28px}.fv__sub{font-size:17px;margin-bottom:22px}.fv__points{gap:6px;justify-content:space-between}.fv__points li{width:calc((100vw - 66px) / 4);height:calc((100vw - 66px) / 4);font-size:10px;line-height:1.35}.fv__points img{width:28px;height:28px;margin-bottom:4px}.about__text p{font-size:14px}.about__text p br,.mech__lead br,.tech__item p br{display:none}.tech__item h3{font-size:34px}.tech__item h3 small{font-size:18px;text-align:center;padding:0}.tech__lead{font-size:18px}.mech__lead{font-size:14px;text-align:left}.features__list{gap:12px}.features__list li{padding:14px 10px 16px}.features__list h3{font-size:13px;letter-spacing:0}.features__list p{font-size:12px}.area__list{gap:16px 10px;font-size:14px}.area__list img{width:26vw;height:26vw}.area__list small{font-size:11px}.hp__list{grid-template-columns:1fr}.flow__list{grid-template-columns:repeat(2,1fr)}.faq summary{padding-left:52px;font-size:14px}.faq summary::before{left:16px}.cta__inner{padding:40px 20px;gap:26px}.cta__lead{font-size:18px;letter-spacing:.1em}.btn--lg{padding:16px 28px;font-size:16px}.cta__points{gap:10px;font-size:11px;word-break:keep-all;overflow-wrap:anywhere}.price__table{min-width:0;font-size:13px}.price__table th,.price__table td{padding:8px 6px}.price__table tbody th{white-space:nowrap}}svg.crop{display:block;width:100%;height:auto;max-width:100%}.fv__visual svg.crop{height:100%}.fv__points svg.crop{width:44px;height:44px;margin-bottom:8px}.area__list svg.crop{width:150px;height:150px;border-radius:50%;margin:0 auto 12px;box-shadow:0 4px 14px rgba(0,0,0,.06)}.tech__item svg.crop{width:400px;margin:0 auto 22px}.hp__item svg.crop{max-height:150px;margin:10px auto}.flow__list svg.crop,.features__list svg.crop{border-radius:4px}@media (max-width:960px){.fv__visual svg.crop{height:auto}}@media (max-width:600px){.fv__points svg.crop{width:28px;height:28px;margin-bottom:4px}.area__list svg.crop{width:26vw;height:26vw}}</style>
+</head>
+<body>
+<header class="header">
+<div class="header__inner">
+<a class="logo" href="#top">
+<span class="logo__name">KOSHO CLINIC</span>
+<span class="logo__tag">あなたのキレイを、もっと身近に</span>
+</a>
+<nav class="gnav" id="gnav" aria-label="メインメニュー">
+<ul>
+<li><a href="#about">PrimeXとは</a></li>
+<li><a href="#features">期待できる効果</a></li>
+<li><a href="#flow">治療の流れ</a></li>
+<li><a href="#area">症例写真</a></li>
+<li><a href="#price">料金表</a></li>
+<li><a href="#faq">よくあるご質問</a></li>
+</ul>
+</nav>
+<a class="btn btn--gold header__cta" href="#contact">カウンセリング予約<span class="arrow" aria-hidden="true"></span></a>
+<button class="menu-btn" type="button" aria-controls="gnav" aria-expanded="false" aria-label="メニューを開く"><span></span><span></span><span></span></button>
+</div>
+</header>
+<main id="top">
+<!-- FV -->
+<section class="fv">
+<div class="fv__inner">
+<div class="fv__text">
+<p class="fv__lead">ウルトラアクセント <span>新型</span></p>
+<h1 class="fv__brand">
+<span class="fv__mark" aria-hidden="true"><svg viewBox="0 0 120 60"><path d="M30 8a22 22 0 1 0 0 44c12 0 18-10 30-22s18-22 30-22a22 22 0 1 1 0 44" fill="none" stroke="#222" stroke-width="5"/></svg></span>
+<span class="fv__name">Alma <b>PrimeX</b><sup>™</sup><small>For All of You</small></span>
+</h1>
+<p class="fv__catch">脂肪へアプローチ<span class="small">しながら、</span><br>引き締めまで。</p>
+<p class="fv__sub">切らないボディコントゥアリング</p>
+<ul class="fv__points">
+<li><svg class="crop" viewBox="59 295 34 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>脂肪<br>ボリュームケア</li>
+<li><svg class="crop" viewBox="143 295 34 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>肌の引き締め<br>ハリの向上</li>
+<li><svg class="crop" viewBox="225 295 34 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>セルライト<br>外観の改善</li>
+<li><svg class="crop" viewBox="308 295 34 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>ダウンタイム<br>ほぼなし</li>
+</ul>
+</div>
+<div class="fv__visual"><svg class="crop" viewBox="418 42 368 351" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Alma PrimeX 本体とハンドピース"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></div>
+</div>
+</section>
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="about__inner">
+<div class="about__text">
+<h2 class="ttl ttl--left">PrimeX<span class="jp">とは</span><span class="en">ABOUT</span></h2>
+<p>Alma PrimeX（アルマ プライムX）は、<br>ガイド超音波「UltraWave」と高周波「AlmaWave 40.68MHz」を<br>組み合わせた、次世代のボディコントゥアリング治療です。<br>脂肪へのアプローチと肌の引き締めを同時に行い、<br>理想のボディラインへと導きます。</p>
+<a class="btn btn--line" href="#tech">詳しく見る<span class="arrow" aria-hidden="true"></span></a>
+</div>
+<div class="about__img"><svg class="crop" viewBox="490 400 296 168" preserveAspectRatio="xMidYMid meet" role="img" aria-label="UltraWave ハンドピース"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></div>
+</div>
+</section>
+<!-- TECHNOLOGY -->
+<section class="tech" id="tech">
+<h2 class="ttl"><span class="num">2</span>つのコア技術<span class="en">TECHNOLOGY</span></h2>
+<div class="tech__box">
+<div class="tech__item">
+<h3><span class="no">01</span>UltraWave</h3>
+<p class="tech__lead">非集点・非侵襲のガイド超音波で<br>局所脂肪をターゲット</p>
+<svg class="crop" viewBox="120 698 200 134" preserveAspectRatio="xMidYMid meet" role="img" aria-label="UltraWave の作用イメージ"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>
+<p>特大アプリケータと真空吸引により、<br>皮下脂肪に均一に超音波エネルギーを届け、<br>脂肪細胞に働きかけます。</p>
+</div>
+<div class="tech__cross" aria-hidden="true"></div>
+<div class="tech__item">
+<h3><span class="no">02</span>UniPolar RF<small>(AlmaWave 40.68MHz)</small></h3>
+<p class="tech__lead">深部を均一に加熱し、<br>コラーゲン形成を促進</p>
+<svg class="crop" viewBox="485 712 197 120" preserveAspectRatio="xMidYMid meet" role="img" aria-label="UniPolar RF の作用イメージ"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>
+<p>Alma独自の40.68MHzの高周波エネルギー<br>（AlmaWave）で、真皮〜皮下組織を均一に加熱し、<br>肌の引き締め・ハリの向上を目指します。</p>
+</div>
+</div>
+</section>
+<!-- MECHANISM -->
+<section class="mech">
+<h2 class="ttl">UltraWave<span class="jp">の仕組み</span><span class="en">MECHANISM</span></h2>
+<p class="mech__lead">特殊な超音波により、脂肪細胞に物理的な刺激を与え、<br>気泡（キャビテーション）を発生させることで、脂肪細胞にアプローチします。</p>
+<div class="mech__body">
+<figure class="mech__wave"><svg class="crop" viewBox="45 985 400 183" preserveAspectRatio="xMidYMid meet" role="img" aria-label="圧縮波と拡張波による気泡の形成・成長・崩壊の図"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></figure>
+<figure class="mech__rf">
+<div class="badge"><span class="badge__en">ALMA WAVE</span><span class="badge__num">40.68</span><span class="badge__unit">MHz</span><span class="badge__en">TECHNOLOGY</span></div>
+<svg class="crop" viewBox="500 985 225 140" preserveAspectRatio="xMidYMid meet" role="img" aria-label="高周波エネルギーが組織に広がるイメージ"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>
+<figcaption>高周波エネルギーを均一に照射し、<br>真皮〜皮下組織にかけて広範囲に熱を届けます。</figcaption>
+</figure>
+</div>
+</section>
+<!-- FEATURES -->
+<section class="features" id="features">
+<h2 class="ttl">PrimeX<span class="jp">の特徴</span><span class="en">FEATURES</span></h2>
+<ul class="features__list">
+<li><span class="no">01</span><h3>脂肪ボリュームへの<br>アプローチ</h3><svg class="crop" viewBox="40 1288 144 59" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>気になる部位の脂肪に<br>効果的にアプローチ</p></li>
+<li><span class="no">02</span><h3>肌の引き締め・<br>ハリの向上</h3><svg class="crop" viewBox="228 1288 143 59" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>コラーゲン形成を促し<br>なめらかな肌へ</p></li>
+<li><span class="no">03</span><h3>セルライトの<br>外観改善</h3><svg class="crop" viewBox="416 1288 143 59" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>凹凸の目立ちにくい<br>なめらかなボディラインへ</p></li>
+<li><span class="no">04</span><h3>ダウンタイムが少ない<br>非侵襲治療</h3><svg class="crop" viewBox="604 1288 143 59" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>日常生活に戻りやすく<br>気軽に受けられる</p></li>
+</ul>
+</section>
+<!-- AREA -->
+<section class="area" id="area">
+<h2 class="ttl">おすすめの部位<span class="en">TREATMENT AREA</span></h2>
+<ul class="area__list">
+<li><svg class="crop" viewBox="74 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>腹部<small>（お腹）</small></li>
+<li><svg class="crop" viewBox="184 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>腰回り<small>（ウエスト）</small></li>
+<li><svg class="crop" viewBox="292 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>太もも<small>（内側・外側）</small></li>
+<li><svg class="crop" viewBox="403 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>臀部<small>（ヒップ）</small></li>
+<li><svg class="crop" viewBox="513 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>二の腕</li>
+<li><svg class="crop" viewBox="623 1428 76 72" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg>顎下<small>（フェイスライン下）</small></li>
+</ul>
+</section>
+<div class="two-col">
+<!-- HANDPIECE -->
+<section class="hp">
+<h2 class="ttl ttl--side">ハンドピース紹介<span class="en">HANDPIECE</span></h2>
+<div class="hp__list">
+<div class="hp__item"><h3>UltraWave <span>ハンドピース</span></h3><svg class="crop" viewBox="50 1590 140 84" preserveAspectRatio="xMidYMid meet" role="img" aria-label="UltraWave ハンドピース"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>特大アプリケータと真空吸引で、皮下脂肪に均一に超音波を届けます。</p></div>
+<div class="hp__item"><h3>UniBody <span>ハンドピース</span></h3><svg class="crop" viewBox="250 1590 120 84" preserveAspectRatio="xMidYMid meet" role="img" aria-label="UniBody ハンドピース"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg><p>AlmaWave 40.68MHzの高周波で、深部を均一に加熱します。</p></div>
+</div>
+</section>
+<!-- FLOW -->
+<section class="flow" id="flow">
+<h2 class="ttl ttl--side">施術の流れ<span class="en">FLOW</span></h2>
+<ol class="flow__list">
+<li><span class="no">01</span><h3>カウンセリング</h3><p>お悩みの確認・診察</p><svg class="crop" viewBox="415 1638 79 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></li>
+<li><span class="no">02</span><h3>施術準備</h3><p>部位のマーキング</p><svg class="crop" viewBox="506 1638 79 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></li>
+<li><span class="no">03</span><h3>施術<small>（約20分）</small></h3><p class="note">※部位により異なります</p><svg class="crop" viewBox="598 1638 79 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></li>
+<li><span class="no">04</span><h3>アフターケア</h3><p>当日から<br>通常の生活可能</p><svg class="crop" viewBox="690 1638 80 70" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><image href="https://crowdworks.jp/attachments/59400986.png" width="786" height="2001"/></svg></li>
+</ol>
+</section>
+<!-- PRICE -->
+<section class="price" id="price">
+<h2 class="ttl ttl--side">料金表<span class="en">PRICE</span></h2>
+<div class="price__scroll">
+<table class="price__table">
+<thead><tr><th scope="col">施術部位</th><th scope="col">1回</th><th scope="col">3回コース</th><th scope="col">5回コース</th></tr></thead>
+<tbody>
+<tr><th scope="row">腹部</th><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">太もも（両側）</th><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">臀部（ヒップ）</th><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">二の腕（両側）</th><td>—</td><td>—</td><td>—</td></tr>
+<tr><th scope="row">顎下</th><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+</div>
+<p class="price__note">※表示価格は税込です。　※部位や範囲により料金が異なります。詳しくはカウンセリング時にご案内いたします。</p>
+</section>
+<!-- FAQ -->
+<section class="faq" id="faq">
+<h2 class="ttl ttl--side">よくあるご質問<span class="en">FAQ</span></h2>
+<div class="faq__list">
+<details><summary>痛みはありますか？</summary><p>回答テキストが入ります。</p></details>
+<details><summary>ダウンタイムはありますか？</summary><p>回答テキストが入ります。</p></details>
+<details><summary>何回くらいで効果を実感できますか？</summary><p>回答テキストが入ります。</p></details>
+<details><summary>どの部位に施術できますか？</summary><p>回答テキストが入ります。</p></details>
+<details><summary>他の施術と組み合わせは可能ですか？</summary><p>回答テキストが入ります。</p></details>
+</div>
+</section>
+</div>
+</main>
+<footer class="cta" id="contact">
+<div class="cta__inner">
+<div class="logo logo--white"><span class="logo__name">KOSHO CLINIC</span><span class="logo__tag">あなたのキレイを、もっと身近に</span></div>
+<div class="cta__main">
+<p class="cta__lead">まずはお気軽にご相談ください</p>
+<a class="btn btn--gold btn--lg" href="#contact">カウンセリング予約はこちら<span class="arrow" aria-hidden="true"></span></a>
+</div>
+<ul class="cta__points">
+<li><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="9" width="22" height="18" rx="3"/><path d="M11 9V6h10v3M12 17a4 4 0 1 0 8 0 4 4 0 1 0-8 0"/></svg>完全予約制<br>プライバシーに配慮</li>
+<li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 28C7 21 4 16 4 11a6 6 0 0 1 12-2 6 6 0 0 1 12 2c0 5-3 10-12 17z"/><path d="M11 15l4 4 6-7"/></svg>経験豊富な医師による<br>安心の施術</li>
+<li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 4h16v24l-4-3-4 3-4-3-4 3z"/><path d="M12 11h8M12 16h8"/></svg>明朗会計で安心</li>
+</ul>
+</div>
+</footer>
+<script>
+// スマホ用メニューの開閉
+const btn = document.querySelector('.menu-btn');
+const nav = document.getElementById('gnav');
+btn.addEventListener('click', () => {
+const open = nav.classList.toggle('is-open');
+btn.setAttribute('aria-expanded', open);
+btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', false); }));
+// スクロールでのフェードイン
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } }), {threshold: .15});
+document.querySelectorAll('.ttl, .tech__item, .features__list li, .area__list li, .hp__item, .flow__list li').forEach(el => { el.classList.add('fade'); io.observe(el); });
+</script>
+</body>
+</html>
