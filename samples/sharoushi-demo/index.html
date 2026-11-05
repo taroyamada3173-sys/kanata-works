@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>社労士事務所の業務フロー デモ（架空データ）| KanataWorks</title>
+<style>
+:root{--n:#17324d;--b:#1f6fb2;--g:#1c8a5a;--o:#c76a12;--r:#c0392b;--l:#dfe6ec;--s:#f4f7f9;--t:#22303c}
+*{box-sizing:border-box}body{margin:0;font:15px/1.65 "Noto Sans JP","Yu Gothic UI","Meiryo",sans-serif;color:var(--t);background:var(--s)}
+header{background:var(--n);color:#fff;padding:18px 24px}header h1{margin:0;font-size:21px}header p{margin:4px 0 0;font-size:13px;color:#cfdbe6}
+.note{background:#fff8e6;border-bottom:1px solid #f0dfb0;padding:8px 24px;font-size:13px}
+nav{display:flex;flex-wrap:wrap;gap:2px;background:#fff;border-bottom:1px solid var(--l);padding:0 16px;position:sticky;top:0;z-index:5}
+nav button{border:0;background:none;padding:12px 13px;font:inherit;font-size:14px;cursor:pointer;color:#51616f;border-bottom:3px solid transparent}
+nav button.on{color:var(--n);font-weight:700;border-color:var(--b)}
+main{max-width:1080px;margin:0 auto;padding:18px 16px 60px}section{display:none}section.on{display:block}
+h2{font-size:18px;margin:0 0 4px;color:var(--n)}h3{font-size:15px;margin:18px 0 6px;color:var(--n)}.lead{margin:0 0 14px;color:#51616f;font-size:14px}
+.card{background:#fff;border:1px solid var(--l);border-radius:8px;padding:14px 16px;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:13px;background:#fff}th,td{border:1px solid var(--l);padding:6px 8px;text-align:left;vertical-align:top}th{background:#eef2f5;font-weight:600}
+.btn{border:1px solid var(--b);background:var(--b);color:#fff;border-radius:6px;padding:7px 14px;font:inherit;font-size:14px;cursor:pointer;margin:2px 6px 2px 0}.btn.sub{background:#fff;color:var(--b)}.btn:disabled{opacity:.5;cursor:default}
+.tag{display:inline-block;padding:0 7px;border-radius:10px;font-size:12px;background:#e8eef3;white-space:nowrap}.ok{background:#dcf3e7;color:#10693f}.warn{background:#fdeed9;color:#9a5208}.ng{background:#fbe3e0;color:#99271b}
+.drop{border:2px dashed #a9bac8;border-radius:8px;padding:14px;text-align:center;color:#51616f;font-size:14px;margin-top:8px}.drop.over{background:#e9f3fb}
+.tree{font:13px/1.7 Consolas,"Noto Sans JP",monospace;white-space:pre-wrap;background:#f7f9fa;border:1px solid var(--l);border-radius:6px;padding:10px;min-height:60px}
+label{display:block;font-size:13px;margin:6px 0 2px}input,select,textarea{font:inherit;font-size:14px;padding:5px 8px;border:1px solid #b8c5d0;border-radius:5px;width:100%}textarea{font:13px/1.5 Consolas,monospace}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media(max-width:760px){.two{grid-template-columns:1fr}}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:stretch;margin:6px 0 10px}.flow div{flex:1 1 130px;background:#eef5fb;border:1px solid #c8dcec;border-radius:6px;padding:7px 9px;font-size:13px}.flow b{display:block;color:var(--n)}
+.viewer{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}.viewer button{border:1px solid #b8c5d0;background:#fff;border-radius:16px;padding:4px 12px;font:inherit;font-size:13px;cursor:pointer}.viewer button.on{background:var(--n);color:#fff;border-color:var(--n)}
+.steps{display:flex;flex-wrap:wrap;gap:6px;padding:10px 0 14px;margin:0;list-style:none;font-size:13px}.steps li{flex:1 1 150px;background:#fff;border:1px solid var(--l);border-radius:6px;padding:6px 9px}.steps li.done{background:#e6f6ee;border-color:#a9dcc2}
+small{color:#66757f}
+</style></head><body>
+<header><h1>社労士事務所の業務フロー デモ</h1><p>架空の顧問先「株式会社ABC」に新入社員「山田太郎さん」が入社し、同じ月に給与計算も行う流れ</p></header>
+<div class="note">人物・会社・書類はすべて架空です。ブラウザの中だけで動き、データは外部へ送信しません。Microsoft 365には接続していない試作で、本番で同じ流れを組む構成は「本番の構成」タブにまとめています。</div>
+<nav id="nav"></nav>
+<main>
+<ol class="steps" id="steps"></ol>
+
+<section id="p1"><h2>① 顧問先との情報共有サイト</h2><p class="lead">顧問先は自社の書類だけを見られます。入社の連絡もここから受け、事務所のタスクへ自動でつながります。</p>
+<div class="viewer" id="viewer"></div><div id="portal"></div></section>
+
+<section id="p2"><h2>② 公文書の取得・振り分け・保存</h2><p class="lead">届いた公文書のPDFを読み取り、顧問先マスタと照合して、顧問先別・年度別・手続別に保存します。判別できないものは「要確認」に分け、誤った顧問先へ入らないようにします。</p>
+<div class="flow"><div><b>1 取得</b>届いたPDFを所定の場所へ</div><div><b>2 読取</b>事業所番号・名称・手続・氏名・日付</div><div><b>3 照合</b>番号→名称の順。㈱などの表記ゆれを吸収</div><div><b>4 保存</b>規則どおりの名前で振り分け</div><div><b>5 共有</b>顧問先のサイトへ公開し通知</div></div>
+<div class="card"><button class="btn" id="load">見本の公文書5件を取り込む</button><button class="btn sub" id="csv">処理結果をCSVで保存</button>
+<div class="drop" id="drop">文字情報のあるPDFをここへ置いても試せます（読み取りはブラウザ内のみ）<br><input type="file" id="file" accept="application/pdf" multiple style="width:auto;border:0"></div></div>
+<table><thead><tr><th>元のファイル</th><th>読み取り結果</th><th>判定</th><th>保存先</th></tr></thead><tbody id="rows"><tr><td colspan="4"><small>まだ取り込んでいません</small></td></tr></tbody></table>
+<h3>保存後のフォルダ</h3><div class="tree" id="tree">（なし）</div></section>
+
+<section id="p3"><h2>③ Outlookのメール・添付の整理 <small>（モックアップ）</small></h2><p class="lead">差出人を顧問先マスタと照合し、顧問先と用件を判定して、添付の保存先と担当者への通知を決めます。自動送信はせず、返信は下書きまでとします。</p>
+<div class="card"><button class="btn" id="mail">受信メールを振り分ける</button></div>
+<table><thead><tr><th>差出人</th><th>件名</th><th>添付</th><th>顧問先</th><th>用件</th><th>処理</th></tr></thead><tbody id="mails"></tbody></table></section>
+
+<section id="p4"><h2>④ 弥生給与の前後の定型作業</h2><p class="lead">勤怠データを受け取ったら、計算の前に確認すべき点を洗い出し、取込用のCSVを作ります。入社の連絡とつながるので、途中入社の確認も漏れません。</p>
+<div class="two"><div class="card"><label for="att">勤怠データ（株式会社ABC 2026年11月分・架空）</label><textarea id="att" rows="8"></textarea><button class="btn" id="chk" style="margin-top:8px">確認して取込用データを作る</button><button class="btn sub" id="dl" disabled>取込用CSVを保存</button></div>
+<div class="card"><b>計算前の確認</b><div id="flags"><small>まだ確認していません</small></div></div></div>
+<table id="out"></table><p><small>取込用CSVの列は説明用です。本番では、お使いの弥生給与 Nextの取込形式に合わせます。</small></p></section>
+
+<section id="p5"><h2>⑤ 手続・給与計算の進捗管理</h2><p class="lead">①〜④の処理に連動して更新されます。顧問先が増えても、誰が何を、いつまでに行うかを一覧で確認できます。</p>
+<div class="card"><button class="btn sub" id="filed">社保・雇用保険の電子申請を提出済みにする</button><small>（本番は電子申請の状況と連動させる想定）</small></div><div id="board"></div></section>
+
+<section id="p6"><h2>本番の構成</h2><p class="lead">デモの各機能を、事務所でお使いのツールでどう組むかの設計図です。</p>
+<table><thead><tr><th>デモの機能</th><th>本番の構成案</th></tr></thead><tbody>
+<tr><td>①共有サイト</td><td>SharePointの顧問先別サイト（または権限を分けたライブラリ）＋ゲストの外部共有。入社連絡はMicrosoft FormsまたはSharePointリストのフォーム。Dropboxからは顧問先ごとに段階的に移行。</td></tr>
+<tr><td>②公文書</td><td>取得：セルズ台帳のダウンロード操作をPower Automate Desktopで自動化（操作方法はセルズの画面と利用条件を確認して決定）。振り分け：Power Automateの「ファイルが作成されたとき」→PDFの読み取り（AI Builder等）→顧問先マスタのリストと照合→ファイルの移動・改名→Teams通知。</td></tr>
+<tr><td>③メール</td><td>Power Automateの「新しいメールが届いたとき」→差出人の照合→添付をSharePointへ保存→Teamsの担当者へ通知。Copilotで要約と返信の下書き。</td></tr>
+<tr><td>④給与</td><td>勤怠のExcel/CSVをOffice ScriptsまたはPower Automateで確認・整形し、弥生給与 Nextの取込形式へ変換。</td></tr>
+<tr><td>⑤進捗</td><td>SharePointリスト（またはPlanner）に手続ごとの行を自動で作成し、期限前にTeamsへ通知。</td></tr>
+<tr><td>顧問先マスタ</td><td>社名・事業所番号・担当者・共有先をSharePointリストに集約し、すべてのフローから参照します。</td></tr></tbody></table>
+<h3>「社労士事務所OS」へ広げるとき</h3>
+<div class="flow"><div><b>事務所ごとの違い</b>顧問先マスタと設定に分離</div><div><b>共通のフロー</b>Power Platformのソリューションとして配布</div><div><b>判断は人に残す</b>要確認の分離と処理ログを標準に</div></div>
+<h3>進める順番の案</h3><div class="flow"><div><b>第1段階</b>顧問先マスタと公文書の振り分け</div><div><b>第2段階</b>共有サイトと顧問先への通知</div><div><b>第3段階</b>進捗管理・メール整理</div><div><b>第4段階</b>給与の前後の作業</div></div>
+<p><small>制作：KanataWorks</small></p></section>
+</main>
+<script>
+const $=s=>document.querySelector(s),h=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const TABS=[['p1','① 共有サイト'],['p2','② 公文書'],['p3','③ メール'],['p4','④ 給与'],['p5','⑤ 進捗'],['p6','本番の構成']];
+const MASTER=[{name:'株式会社ABC',nos:['01234','9999-000001-1'],mail:'abc.example'},{name:'有限会社みどり商事',nos:['01235','9999-000002-2'],mail:'midori.example'}];
+const S={viewer:'株式会社ABC',docs:[],rows:[],hashes:new Set(),joined:false,notices:{},done:new Set()};
+const SAMPLES=[
+['通知書_20261105_001.pdf','健康保険・厚生年金保険被保険者資格取得確認および標準報酬決定通知書 事業所番号 01234 事業所名称 株式会社ABC 被保険者氏名 山田太郎 資格取得年月日 令和8年11月1日 通知年月日 令和8年11月5日'],
+['kobunsho(1).pdf','雇用保険被保険者資格取得等確認通知書 事業所番号 9999-000001-1 事業所名称 ㈱ＡＢＣ 被保険者氏名 山田太郎 資格取得年月日 令和8年11月1日 通知年月日 令和8年11月5日'],
+['通知書_20261105_002.pdf','健康保険・厚生年金保険被保険者標準報酬改定通知書 事業所番号 01235 事業所名称 有限会社みどり商事 被保険者氏名 佐藤花子 通知年月日 令和8年11月4日'],
+['scan_0007.pdf','雇用保険被保険者離職票 事業所名称 株式会社エービーシー物流 被保険者氏名 鈴木一郎 通知年月日 令和8年11月2日'],
+['通知書_20261105_001 (コピー).pdf','健康保険・厚生年金保険被保険者資格取得確認および標準報酬決定通知書 事業所番号 01234 事業所名称 株式会社ABC 被保険者氏名 山田太郎 資格取得年月日 令和8年11月1日 通知年月日 令和8年11月5日']];
+const norm=s=>(s||'').normalize('NFKC').replace(/\s/g,'').replace(/\(株\)/g,'株式会社').replace(/\(有\)/g,'有限会社');
+const PROC=[[/雇用保険.*資格取得/,'雇保資格取得'],[/資格取得/,'社保資格取得'],[/標準報酬改定|月額変更/,'月額変更'],[/算定|標準報酬決定通知/,'算定基礎'],[/離職/,'離職'],[/喪失/,'資格喪失']];
+function wareki(s){const m=(s||'').normalize('NFKC').match(/令和\s*(\d+)\s*年\s*(\d+)\s*月\s*(\d+)\s*日/);if(!m)return null;return `${2018+ +m[1]}${m[2].padStart(2,'0')}${m[3].padStart(2,'0')}`}
+function read(raw){const t=(raw||'').normalize('NFKC').replace(/\s/g,''),f=re=>(t.match(re)||[])[1]||'',E='(?=事業所|被保険者氏名|氏名|生年月日|資格取得年月日|通知年月日|$)';return{no:f(/事業所番号([\d-]+)/),name:f(new RegExp('事業所名称(.+?)'+E)),person:f(new RegExp('被保険者氏名(.+?)'+E)),date:wareki(f(/通知年月日(令和\d+年\d+月\d+日)/)),proc:(PROC.find(p=>p[0].test(t))||[])[1]||''}}
+async function sha(t){const b=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(t.replace(/\s/g,'')));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join('')}
+function match(r){let c=MASTER.find(m=>r.no&&m.nos.includes(r.no));if(c)return{c,by:'事業所番号'};c=MASTER.find(m=>r.name&&norm(m.name)===norm(r.name));return c?{c,by:'事業所名'}:null}
+function fiscal(d){const y=+d.slice(0,4),m=+d.slice(4,6);return(m>=4?y:y-1)+'年度'}
+async function ingest(file,text){const r=read(text),k=await sha(text),row={file,r};
+ if(S.hashes.has(k)){row.st='dup'}else{const m=match(r);
+  if(m&&r.proc&&r.date){S.hashes.add(k);file2(row,m.c,r);row.st='ok';row.by=m.by}else{row.st='check';row.text=text;row.k=k}}
+ S.rows.push(row);drawDocs();await new Promise(z=>setTimeout(z,window.__slow||0))}
+function file2(row,c,r){let base=`${c.name}_${r.proc}_${r.person||'氏名なし'}_${r.date}`,name=base+'.pdf',n=2;const dir=`${c.name}/${fiscal(r.date)}/${r.proc}/`;while(S.docs.some(d=>d.path===dir+name))name=`${base}_${n++}.pdf`;row.path=dir+name;S.docs.push({client:c.name,proc:r.proc,person:r.person,date:r.date,name,path:row.path});
+ (S.notices[c.name]=S.notices[c.name]||[]).unshift(`${r.proc}の公文書（${r.person||''}）を公開しました`);
+ if(r.person==='山田太郎'){mark('receive');mark('share');if(r.proc==='雇保資格取得')mark('koyo');if(r.proc==='社保資格取得')mark('shaho')}}
+function assign(i,name){const row=S.rows[i],c=MASTER.find(m=>m.name===name);if(!c)return;S.hashes.add(row.k);row.r.proc=row.r.proc||'その他';row.r.date=row.r.date||'00000000';file2(row,c,row.r);row.st='ok';row.by='担当者が確認';drawDocs()}
+function drawDocs(){const T={ok:'<span class="tag ok">保存</span>',check:'<span class="tag warn">要確認</span>',dup:'<span class="tag ng">重複・保存せず</span>'};
+ $('#rows').innerHTML=S.rows.map((x,i)=>`<tr><td>${h(x.file)}</td><td>${h(x.r.name||'（読めず）')}${x.r.no?` / ${h(x.r.no)}`:''}<br>${h(x.r.proc)} / ${h(x.r.person)} / ${h(x.r.date)}</td><td>${T[x.st]}${x.by?`<br><small>${h(x.by)}で一致</small>`:''}</td><td>${x.st==='ok'?h(x.path):x.st==='dup'?'同じ内容を処理済みのため保存しません':`${x.err?'PDFを読み取れませんでした':x.r.name?'マスタに一致しません':'事業所名を読み取れませんでした'}。担当者が確認：<select data-i="${i}"><option value="">顧問先を選ぶ</option>${MASTER.map(m=>`<option>${h(m.name)}</option>`).join('')}</select>`}</td></tr>`).join('')||'';
+ document.querySelectorAll('#rows select').forEach(e=>e.onchange=()=>assign(+e.dataset.i,e.value));
+ const t={};S.docs.forEach(d=>{const p=d.path.split('/');((t[p[0]]=t[p[0]]||{})[p[1]+'/'+p[2]]=t[p[0]][p[1]+'/'+p[2]]||[]).push(p[3])});
+ $('#tree').textContent=Object.keys(t).map(c=>c+'/\n'+Object.keys(t[c]).map(g=>'  '+g+'/\n'+t[c][g].map(f=>'    '+f).join('\n')).join('\n')).join('\n')||'（なし）';drawPortal();drawBoard()}
+async function pdfText(f){const pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';const d=await pdfjs.getDocument({data:await f.arrayBuffer()}).promise;let o='';for(let i=1;i<=d.numPages;i++){const c=await(await d.getPage(i)).getTextContent();o+=c.items.map(x=>x.str).join(' ')+' '}return o}
+async function addFiles(fs){for(const f of fs){try{await ingest(f.name,await pdfText(f))}catch(e){S.rows.push({file:f.name,r:{name:''},st:'check',text:'',k:f.name,err:1});drawDocs()}}}
+function drawViewer(){const V=['事務所（担当者）',...MASTER.map(m=>m.name)];$('#viewer').innerHTML=V.map(v=>`<button class="${v===S.viewer?'on':''}">${h(v)}</button>`).join('')+'<small style="align-self:center">ログインする立場を切り替えられます</small>';document.querySelectorAll('#viewer button').forEach(b=>b.onclick=()=>{S.viewer=b.textContent;drawViewer();drawPortal()})}
+function drawPortal(){const v=S.viewer,off=v.startsWith('事務所'),docs=S.docs.filter(d=>off||d.client===v);const list=docs.length?`<table><thead><tr><th>書類</th>${off?'<th>顧問先</th>':''}<th>対象者</th><th>日付</th></tr></thead><tbody>${docs.map(d=>`<tr><td>${h(d.proc)}の公文書<br><small>${h(d.name)}</small></td>${off?`<td>${h(d.client)}</td>`:''}<td>${h(d.person)}</td><td>${h(d.date)}</td></tr>`).join('')}</tbody></table>`:'<small>公開された書類はまだありません。「② 公文書」で取り込むと、ここへ公開されます。</small>';
+ const form=v==='株式会社ABC'?`<div class="card"><b>入社の連絡</b>${S.joined?'<p><span class="tag ok">送信済み</span> 事務所へ届き、手続のタスクを作成しました。</p>':`<div class="two"><div><label>氏名</label><input id="jn" value="山田太郎"></div><div><label>入社日</label><input id="jd" type="date" value="2026-11-01"></div><div><label>基本給（月額・架空）</label><input id="js" value="250000"></div><div><label>雇用保険</label><select><option>加入</option><option>対象外</option></select></div></div><button class="btn" id="join" style="margin-top:8px">事務所へ送信</button>`}</div>`:'';
+ const nt=(S.notices[v]||[]).map(n=>`<li>${h(n)}</li>`).join('');
+ $('#portal').innerHTML=`${form}<div class="card"><b>${off?'全顧問先の書類（事務所のみ閲覧可）':h(v)+'の書類'}</b>${off?'':'<br><small>他社の書類は表示されません</small>'}<div style="margin-top:8px">${list}</div></div>${!off&&nt?`<div class="card"><b>お知らせ</b><ul style="margin:6px 0 0;padding-left:20px;font-size:14px">${nt}</ul></div>`:''}`;
+ const j=$('#join');if(j)j.onclick=()=>{S.joined=true;mark('joined');drawPortal();drawBoard();drawSteps()}}
+const MAILS=[['keiri@abc.example','11月分の勤怠データ送付','kintai_202611.csv','株式会社ABC','給与計算','添付を「勤怠/2026年11月」へ保存し、④の確認へ'],['soumu@abc.example','入社予定者の件','履歴書.pdf','株式会社ABC','入社手続','共有サイトの入社連絡へ案内。担当者へ通知'],['info@midori.example','就業規則の改定について','','有限会社みどり商事','相談','担当者へ通知し、要約と返信の下書きを作成'],['news@service.example','セミナーのご案内','','―','その他','「案内」フォルダへ移動。通知なし'],['tanaka@unknown.example','お見積りのご相談','','未登録','要確認','顧問先に一致しないため担当者へ確認']];
+function drawMails(run){$('#mails').innerHTML=MAILS.map(m=>`<tr><td>${h(m[0])}</td><td>${h(m[1])}</td><td>${h(m[2])}</td>${run?`<td>${h(m[3])}</td><td><span class="tag ${m[4]==='要確認'?'warn':'ok'}">${h(m[4])}</span></td><td>${h(m[5])}</td>`:'<td></td><td></td><td></td>'}</tr>`).join('')}
+const ATT=`社員番号,氏名,出勤日数,所定労働日数,残業時間,有給日数,打刻漏れ
+1001,青木健,20,20,12.5,0,0
+1002,井上真由,19,20,48.0,1,0
+1003,上田翔,20,20,8.0,0,2
+1004,江藤みか,18,20,0.0,2,0
+1005,山田太郎,20,20,3.5,0,0`;
+const STAFF=['1001','1002','1003','1004'];let CSV='';
+function check(){const L=$('#att').value.trim().split(/\r?\n/).map(l=>l.split(',')),hd=L[0],R=L.slice(1).map(c=>Object.fromEntries(hd.map((k,i)=>[k,(c[i]||'').trim()])));const F=[];
+ R.forEach(r=>{const o=+r['残業時間'];if(o>=45)F.push(['warn',`${r['氏名']}：残業${o}時間。月45時間以上のため、36協定の範囲を確認`]);if(+r['打刻漏れ']>0)F.push(['warn',`${r['氏名']}：打刻漏れ${r['打刻漏れ']}件。顧問先へ確認`]);if(+r['出勤日数']+ +r['有給日数']<+r['所定労働日数'])F.push(['warn',`${r['氏名']}：出勤＋有給が所定日数に足りない。欠勤の扱いを確認`]);
+  if(!STAFF.includes(r['社員番号'])){F.push(S.joined?['ok',`${r['氏名']}：入社の連絡と一致（11/1入社・基本給250,000円）。給与マスタへの登録と、社会保険料の控除開始月を確認`]:['ng',`${r['氏名']}：給与マスタに未登録で、入社の連絡もありません。顧問先へ確認`])}});
+ $('#flags').innerHTML=F.map(f=>`<p style="margin:6px 0;font-size:14px"><span class="tag ${f[0]}">${f[0]==='ok'?'連携':f[0]==='ng'?'要確認':'確認'}</span> ${h(f[1])}</p>`).join('');
+ const hdr=['社員番号','氏名','出勤日数','残業時間','有給日数'];CSV=[hdr.join(','),...R.map(r=>hdr.map(k=>r[k]).join(','))].join('\r\n');
+ $('#out').innerHTML=`<thead><tr>${hdr.map(k=>`<th>${k}</th>`).join('')}</tr></thead><tbody>${R.map(r=>`<tr>${hdr.map(k=>`<td>${h(r[k])}</td>`).join('')}</tr>`).join('')}</tbody>`;$('#dl').disabled=false;mark('kintai');mark('check');drawBoard();drawSteps()}
+function save(name,txt){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([String.fromCharCode(0xFEFF)+txt],{type:'text/csv'}));a.download=name;a.click()}
+const TASKS=[{g:'株式会社ABC／山田太郎さんの入社手続',req:'joined',t:[['joined','入社連絡の受付','顧問先','―'],['shaho','健康保険・厚生年金の資格取得届','担当A','11/6（入社から5日以内）'],['koyo','雇用保険の資格取得届','担当A','12/10（入社の翌月10日まで）'],['receive','公文書の受領・保存','自動','―'],['share','顧問先への共有・通知','自動','―']]},{g:'株式会社ABC／11月分の給与計算',t:[['kintai','勤怠データの受領','自動','11/30'],['check','計算前の確認','自動＋担当B','12/2'],['import','弥生給与への取込・計算','担当B','12/3'],['approve','担当者の最終確認','担当C','12/4'],['slip','給与明細の共有','担当B','12/5']]}];
+function mark(k){S.done.add(k)}
+function drawBoard(){$('#board').innerHTML=TASKS.map(G=>{const hide=G.req&&!S.done.has(G.req);const n=G.t.filter(t=>S.done.has(t[0])).length;return`<div class="card"><b>${h(G.g)}</b> <span class="tag ${n===G.t.length?'ok':''}">${hide?'入社連絡待ち':n+'/'+G.t.length}</span>${hide?'<p><small>①で入社の連絡を送信すると、手続のタスクが自動で作られます。</small></p>':`<table style="margin-top:8px"><thead><tr><th>作業</th><th>担当</th><th>期限</th><th>状態</th></tr></thead><tbody>${G.t.map(t=>`<tr><td>${h(t[1])}</td><td>${h(t[2])}</td><td>${h(t[3])}</td><td>${S.done.has(t[0])?'<span class="tag ok">完了</span>':'<span class="tag">未了</span>'}</td></tr>`).join('')}</tbody></table>`}</div>`}).join('');drawSteps()}
+const STEPS=[['joined','顧問先が入社を連絡'],['shaho','電子申請を提出'],['receive','公文書を自動で保存'],['share','顧問先へ共有・通知'],['check','勤怠を確認'],['import','弥生へ取込']];
+function drawSteps(){$('#steps').innerHTML=STEPS.map((s,i)=>`<li class="${S.done.has(s[0])?'done':''}">${i+1}. ${h(s[1])}${S.done.has(s[0])?' ✓':''}</li>`).join('')}
+function tab(id){document.querySelectorAll('main section').forEach(s=>s.classList.toggle('on',s.id===id));document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===id));scrollTo(0,0)}
+$('#nav').innerHTML=TABS.map(t=>`<button data-t="${t[0]}">${t[1]}</button>`).join('');document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>tab(b.dataset.t));
+$('#load').onclick=async()=>{$('#load').disabled=true;for(const s of SAMPLES)await ingest(s[0],s[1])};
+$('#csv').onclick=()=>save('処理結果.csv',['元のファイル,判定,保存先',...S.rows.map(r=>[r.file,r.st==='ok'?'保存':r.st==='dup'?'重複':'要確認',r.path||''].join(','))].join('\r\n'));
+$('#file').onchange=e=>addFiles([...e.target.files]);const D=$('#drop');D.ondragover=e=>{e.preventDefault();D.classList.add('over')};D.ondragleave=()=>D.classList.remove('over');D.ondrop=e=>{e.preventDefault();D.classList.remove('over');addFiles([...e.dataTransfer.files])};
+$('#mail').onclick=()=>drawMails(true);$('#att').value=ATT;$('#chk').onclick=check;$('#dl').onclick=()=>{save('弥生取込用_株式会社ABC_202611.csv',CSV);mark('import');drawBoard()};
+$('#filed').onclick=()=>{mark('shaho');mark('koyo');drawBoard()};
+drawViewer();drawPortal();drawMails(false);drawBoard();tab('p1');
+</script></body></html>
